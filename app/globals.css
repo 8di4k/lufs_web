@@ -176,3 +176,116 @@ html {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-neon-cyan);
 }
+
+/* ========================================
+   ACCESSIBILITY IMPROVEMENTS
+   ======================================== */
+
+/* Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Focus Visible Styles - Enhanced for Accessibility */
+*:focus-visible {
+  outline: 2px solid var(--color-neon-green);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  :root {
+    --glow-green: none;
+    --glow-purple: none;
+    --glow-cyan: none;
+    --glow-green-strong: none;
+    --glow-purple-strong: none;
+    --glow-cyan-strong: none;
+  }
+  
+  .neon-glow-green,
+  .neon-glow-purple,
+  .neon-glow-cyan,
+  .neon-glow-green-strong,
+  .neon-glow-purple-strong,
+  .neon-glow-cyan-strong {
+    text-shadow: none;
+  }
+  
+  button, a {
+    border: 2px solid currentColor !important;
+  }
+}
+
+/* Skip to Main Content Link (for keyboard users) */
+.skip-to-main {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 999;
+  padding: 1rem 1.5rem;
+  background: var(--color-neon-green);
+  color: var(--color-dark);
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 0 0 4px 4px;
+}
+
+.skip-to-main:focus {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Ensure sufficient color contrast */
+.text-muted {
+  color: #9ca3af;
+  /* Contrast ratio 4.5:1 against dark background */
+}
+
+/* Screen Reader Only Content */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Interactive Elements - Ensure keyboard accessibility */
+button,
+a,
+[role="button"],
+[role="link"] {
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:disabled,
+[aria-disabled="true"] {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* Improved Touch Targets (minimum 44x44px) */
+@media (pointer: coarse) {
+  button,
+  a,
+  input,
+  select,
+  textarea {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}

@@ -1,0 +1,502 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - link "Skip to main content" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - main [ref=e3]:
+    - main [ref=e4]:
+      - generic [ref=e10]:
+        - heading "L U F S Music Analyzer" [level=1] [ref=e12]:
+          - generic [ref=e14]:
+            - generic [ref=e15]: L
+            - generic [ref=e16]: U
+            - generic [ref=e17]: F
+            - generic [ref=e18]: S
+          - generic [ref=e19]: Music Analyzer
+        - paragraph [ref=e20]: Professional Audio Analysis Powered by AI
+        - generic [ref=e21]:
+          - generic [ref=e22]: 90-97% Accuracy
+          - generic [ref=e23]: 10-15s Analysis
+          - generic [ref=e24]: 1000+ Platforms
+        - generic [ref=e25]:
+          - generic [ref=e26]:
+            - generic [ref=e27]:
+              - link "Open in Telegram" [ref=e28] [cursor=pointer]:
+                - /url: https://t.me/your_bot_name
+                - img
+                - text: Open in Telegram
+              - paragraph [ref=e29]: ⚡ Start analyzing in 30 seconds
+            - button "Watch Demo" [ref=e30] [cursor=pointer]:
+              - img
+              - text: Watch Demo
+          - generic [ref=e31]:
+            - generic [ref=e32]:
+              - img [ref=e33]
+              - text: 10,000+ users
+            - generic [ref=e38]:
+              - img [ref=e39]
+              - text: 1M+ tracks analyzed
+            - generic [ref=e42]: ⭐ 4.9/5 stars
+        - generic [ref=e44]:
+          - generic [ref=e45]: Scroll
+          - img [ref=e46]
+      - generic [ref=e49]:
+        - generic [ref=e50]:
+          - heading "Powered by Numbers" [level=2] [ref=e51]
+          - paragraph [ref=e52]: Industry-leading accuracy, speed, and coverage. See why thousands trust LUFS Music Analyzer.
+        - generic [ref=e53]:
+          - generic [ref=e55]:
+            - img [ref=e57]
+            - generic [ref=e66]: 0%
+            - paragraph [ref=e67]: BPM Detection Accuracy
+            - generic [ref=e68]: 15% better than competitors
+          - generic [ref=e70]:
+            - img [ref=e72]
+            - generic [ref=e75]: 0s
+            - paragraph [ref=e76]: Average Analysis Time
+            - generic [ref=e77]: 3x faster than average
+          - generic [ref=e79]:
+            - img [ref=e81]
+            - generic [ref=e85]: 0+
+            - paragraph [ref=e86]: Supported Platforms
+            - generic [ref=e87]: Most comprehensive
+          - generic [ref=e89]:
+            - img [ref=e91]
+            - generic [ref=e94]: $0
+            - paragraph [ref=e95]: Monthly Plan
+            - generic [ref=e96]: Best value in market
+      - generic [ref=e98]:
+        - generic [ref=e99]:
+          - generic [ref=e100]: Trusted by Thousands
+          - heading "Join the Community" [level=2] [ref=e101]
+          - paragraph [ref=e102]: Thousands of musicians, producers, and audio engineers trust LUFS Music Analyzer for their audio analysis needs.
+        - generic [ref=e103]:
+          - generic [ref=e104]:
+            - img [ref=e106]
+            - generic [ref=e111]:
+              - generic [ref=e112]: 0+
+              - paragraph [ref=e113]: Active Users
+          - generic [ref=e114]:
+            - img [ref=e116]
+            - generic [ref=e120]:
+              - generic [ref=e121]: 0+
+              - paragraph [ref=e122]: Tracks Analyzed
+          - generic [ref=e123]:
+            - img [ref=e125]
+            - generic [ref=e127]:
+              - generic [ref=e128]: 0/5
+              - paragraph [ref=e129]: User Rating
+          - generic [ref=e130]:
+            - img [ref=e132]
+            - generic [ref=e135]:
+              - generic [ref=e136]: 0+
+              - paragraph [ref=e137]: Reviews
+        - generic [ref=e138]:
+          - heading "Supporting 1000+ platforms including:" [level=3] [ref=e139]
+          - generic [ref=e140]:
+            - generic [ref=e142]:
+              - generic [ref=e144]:
+                - generic [ref=e145]: 📺
+                - generic [ref=e146]: YouTube
+              - generic [ref=e148]:
+                - generic [ref=e149]: ☁️
+                - generic [ref=e150]: SoundCloud
+              - generic [ref=e152]:
+                - generic [ref=e153]: 🎵
+                - generic [ref=e154]: Spotify
+              - generic [ref=e156]:
+                - generic [ref=e157]: 🎶
+                - generic [ref=e158]: Apple Music
+              - generic [ref=e160]:
+                - generic [ref=e161]: 🎬
+                - generic [ref=e162]: TikTok
+              - generic [ref=e164]:
+                - generic [ref=e165]: 🎸
+                - generic [ref=e166]: Bandcamp
+              - generic [ref=e168]:
+                - generic [ref=e169]: 🎧
+                - generic [ref=e170]: Mixcloud
+              - generic [ref=e172]:
+                - generic [ref=e173]: 🎼
+                - generic [ref=e174]: Deezer
+              - generic [ref=e176]:
+                - generic [ref=e177]: 📺
+                - generic [ref=e178]: YouTube
+              - generic [ref=e180]:
+                - generic [ref=e181]: ☁️
+                - generic [ref=e182]: SoundCloud
+              - generic [ref=e184]:
+                - generic [ref=e185]: 🎵
+                - generic [ref=e186]: Spotify
+              - generic [ref=e188]:
+                - generic [ref=e189]: 🎶
+                - generic [ref=e190]: Apple Music
+              - generic [ref=e192]:
+                - generic [ref=e193]: 🎬
+                - generic [ref=e194]: TikTok
+              - generic [ref=e196]:
+                - generic [ref=e197]: 🎸
+                - generic [ref=e198]: Bandcamp
+              - generic [ref=e200]:
+                - generic [ref=e201]: 🎧
+                - generic [ref=e202]: Mixcloud
+              - generic [ref=e204]:
+                - generic [ref=e205]: 🎼
+                - generic [ref=e206]: Deezer
+            - generic [ref=e207]:
+              - generic [ref=e209]:
+                - generic [ref=e210]: 📺
+                - generic [ref=e211]: YouTube
+              - generic [ref=e213]:
+                - generic [ref=e214]: ☁️
+                - generic [ref=e215]: SoundCloud
+              - generic [ref=e217]:
+                - generic [ref=e218]: 🎵
+                - generic [ref=e219]: Spotify
+              - generic [ref=e221]:
+                - generic [ref=e222]: 🎶
+                - generic [ref=e223]: Apple Music
+              - generic [ref=e225]:
+                - generic [ref=e226]: 🎬
+                - generic [ref=e227]: TikTok
+              - generic [ref=e229]:
+                - generic [ref=e230]: 🎸
+                - generic [ref=e231]: Bandcamp
+              - generic [ref=e233]:
+                - generic [ref=e234]: 🎧
+                - generic [ref=e235]: Mixcloud
+              - generic [ref=e237]:
+                - generic [ref=e238]: 🎼
+                - generic [ref=e239]: Deezer
+              - generic [ref=e241]:
+                - generic [ref=e242]: 📺
+                - generic [ref=e243]: YouTube
+              - generic [ref=e245]:
+                - generic [ref=e246]: ☁️
+                - generic [ref=e247]: SoundCloud
+              - generic [ref=e249]:
+                - generic [ref=e250]: 🎵
+                - generic [ref=e251]: Spotify
+              - generic [ref=e253]:
+                - generic [ref=e254]: 🎶
+                - generic [ref=e255]: Apple Music
+              - generic [ref=e257]:
+                - generic [ref=e258]: 🎬
+                - generic [ref=e259]: TikTok
+              - generic [ref=e261]:
+                - generic [ref=e262]: 🎸
+                - generic [ref=e263]: Bandcamp
+              - generic [ref=e265]:
+                - generic [ref=e266]: 🎧
+                - generic [ref=e267]: Mixcloud
+              - generic [ref=e269]:
+                - generic [ref=e270]: 🎼
+                - generic [ref=e271]: Deezer
+        - generic [ref=e272]:
+          - generic [ref=e273]: ⚡ Lightning Fast Analysis
+          - generic [ref=e274]: 🔒 100% Private & Secure
+          - generic [ref=e275]: 🎯 90-97% Accuracy
+          - generic [ref=e276]: 💎 Best Price in Market
+      - generic [ref=e280]:
+        - generic [ref=e281]:
+          - generic [ref=e282]: ⚡ Powerful Features
+          - heading "Everything You Need" [level=2] [ref=e283]
+          - paragraph [ref=e284]: Professional-grade music analysis tools at your fingertips. Fast, accurate, and incredibly easy to use.
+        - generic [ref=e285]:
+          - generic [ref=e288]:
+            - img [ref=e290]
+            - heading "Multi-Platform Support" [level=3] [ref=e293]
+            - paragraph [ref=e294]: Upload from 1000+ platforms including YouTube, SoundCloud, Spotify, Apple Music, TikTok, and more. Just paste the link.
+            - generic [ref=e296]: 1000+ Platforms
+          - generic [ref=e302]:
+            - img [ref=e304]
+            - heading "Lightning Fast" [level=3] [ref=e306]
+            - paragraph [ref=e307]: Get comprehensive analysis in just 10-15 seconds. No waiting, no queues. Instant results powered by optimized AI models.
+            - generic [ref=e309]: 10-15s Analysis
+          - generic [ref=e315]:
+            - img [ref=e317]
+            - heading "AI-Powered Accuracy" [level=3] [ref=e321]
+            - paragraph [ref=e322]: 5 advanced AI models working together for 90-97% accuracy in BPM, key, and Hz detection. Industry-leading precision.
+            - generic [ref=e324]: 90-97% Accuracy
+          - generic [ref=e330]:
+            - img [ref=e332]
+            - heading "Best Pricing" [level=3] [ref=e334]
+            - paragraph [ref=e335]: Start free with 3 analyses per week. Upgrade to unlimited for just $3.99/month or $24.99/year. No hidden fees.
+            - generic [ref=e337]: From $3.99/mo
+          - generic [ref=e343]:
+            - img [ref=e345]
+            - heading "Complete Music Analysis" [level=3] [ref=e349]
+            - paragraph [ref=e350]: BPM detection, musical key identification, Hz tuning analysis, and more. Everything you need in one comprehensive report.
+            - generic [ref=e352]: 5+ Metrics
+          - generic [ref=e358]:
+            - img [ref=e360]
+            - heading "No Registration Needed" [level=3] [ref=e364]
+            - paragraph [ref=e365]: Start analyzing immediately via Telegram. No sign-up forms, no email verification, no hassle. Just pure convenience.
+            - generic [ref=e367]: Instant Access
+      - generic [ref=e375]:
+        - generic [ref=e376]:
+          - generic [ref=e377]: 🎵 Try It Out
+          - heading "See It In Action" [level=2] [ref=e378]
+          - paragraph [ref=e379]: Watch how fast and accurate our analysis engine works. This is a demo preview of the actual bot experience.
+        - generic [ref=e382]:
+          - img [ref=e384]
+          - generic [ref=e386]:
+            - heading "Ready to Analyze" [level=3] [ref=e387]
+            - paragraph [ref=e388]: Click below to see a live demo of music analysis
+          - button "Start Demo Analysis" [ref=e389] [cursor=pointer]:
+            - img
+            - text: Start Demo Analysis
+          - generic [ref=e390]:
+            - img [ref=e391]
+            - paragraph [ref=e394]: Drag & drop preview (coming soon in bot)
+        - paragraph [ref=e395]: 💡 This is a preview. The real bot analyzes your actual tracks instantly via Telegram.
+      - generic [ref=e400]:
+        - generic [ref=e401]:
+          - generic [ref=e402]: 🔥 Why We're Better
+          - heading "Better Than The Rest" [level=2] [ref=e403]
+          - paragraph [ref=e404]: See how we stack up against the competition. We lead in speed, accuracy, and value.
+        - generic [ref=e406]:
+          - heading "Feature" [level=3] [ref=e408]
+          - generic [ref=e409]:
+            - generic [ref=e410]: ⭐ Our Solution
+            - heading "LUFS Analyzer" [level=3] [ref=e411]
+          - heading "Competitor A" [level=3] [ref=e413]
+          - heading "Competitor B" [level=3] [ref=e415]
+          - generic [ref=e416]:
+            - generic [ref=e417]: BPM Accuracy
+            - generic [ref=e420]: 94%
+            - generic [ref=e422]:
+              - img [ref=e424]
+              - generic [ref=e426]: 85%
+            - generic [ref=e428]:
+              - img [ref=e430]
+              - generic [ref=e432]: 88%
+          - generic [ref=e433]:
+            - generic [ref=e434]: Analysis Speed
+            - generic [ref=e437]: 10-15s
+            - generic [ref=e439]:
+              - img [ref=e441]
+              - generic [ref=e445]: 30-60s
+            - generic [ref=e447]:
+              - img [ref=e449]
+              - generic [ref=e453]: 45s
+          - generic [ref=e454]:
+            - generic [ref=e455]: Platform Support
+            - generic [ref=e458]: 1000+
+            - generic [ref=e460]:
+              - img [ref=e462]
+              - generic [ref=e464]: "50"
+            - generic [ref=e466]:
+              - img [ref=e468]
+              - generic [ref=e470]: "100"
+          - generic [ref=e471]:
+            - generic [ref=e472]: Pricing
+            - generic [ref=e475]: $3.99/mo
+            - generic [ref=e477]:
+              - img [ref=e479]
+              - generic [ref=e483]: $9.99/mo
+            - generic [ref=e485]:
+              - img [ref=e487]
+              - generic [ref=e491]: $7.99/mo
+          - generic [ref=e492]:
+            - generic [ref=e493]: No Signup Required
+            - generic [ref=e496]: "Yes"
+            - generic [ref=e498]:
+              - img [ref=e500]
+              - generic [ref=e504]: Required
+            - generic [ref=e506]:
+              - img [ref=e508]
+              - generic [ref=e510]: Limited
+          - generic [ref=e511]:
+            - generic [ref=e512]: Key Detection
+            - generic [ref=e515]: "Yes"
+            - generic [ref=e517]:
+              - img [ref=e519]
+              - generic [ref=e522]: "Yes"
+            - generic [ref=e524]:
+              - img [ref=e526]
+              - generic [ref=e528]: Basic
+          - generic [ref=e529]:
+            - generic [ref=e530]: Hz Tuning Analysis
+            - generic [ref=e533]: "Yes"
+            - generic [ref=e535]:
+              - img [ref=e537]
+              - generic [ref=e541]: "No"
+            - generic [ref=e543]:
+              - img [ref=e545]
+              - generic [ref=e549]: "No"
+        - paragraph [ref=e550]: "* Comparison based on publicly available data and testing as of October 2025"
+      - generic [ref=e556]:
+        - generic [ref=e557]:
+          - generic [ref=e558]: 💎 Simple Pricing
+          - heading "Choose Your Plan" [level=2] [ref=e559]
+          - paragraph [ref=e560]: Start free, upgrade when you need more. All plans include full feature access.
+        - generic [ref=e561]:
+          - generic [ref=e563]:
+            - generic [ref=e564]:
+              - heading "Free" [level=3] [ref=e565]
+              - generic [ref=e567]:
+                - generic [ref=e568]: $0
+                - generic [ref=e569]: /forever
+              - paragraph [ref=e570]: Perfect to try
+            - list [ref=e571]:
+              - listitem [ref=e572]:
+                - img [ref=e573]
+                - generic [ref=e575]: 3 analyses per week
+              - listitem [ref=e576]:
+                - img [ref=e577]
+                - generic [ref=e579]: BPM detection (90-94% accuracy)
+              - listitem [ref=e580]:
+                - img [ref=e581]
+                - generic [ref=e583]: Musical key identification
+              - listitem [ref=e584]:
+                - img [ref=e585]
+                - generic [ref=e587]: Hz tuning analysis
+              - listitem [ref=e588]:
+                - img [ref=e589]
+                - generic [ref=e591]: Energy & tempo classification
+              - listitem [ref=e592]:
+                - img [ref=e593]
+                - generic [ref=e595]: All 1000+ platforms supported
+            - button "Start Free" [ref=e596] [cursor=pointer]
+          - generic [ref=e598]:
+            - generic [ref=e600]:
+              - img [ref=e601]
+              - text: Most Popular
+            - generic [ref=e604]:
+              - heading "Monthly" [level=3] [ref=e605]
+              - generic [ref=e607]:
+                - generic [ref=e608]: $3.99
+                - generic [ref=e609]: /per month
+              - paragraph [ref=e610]: Most Flexible
+            - list [ref=e611]:
+              - listitem [ref=e612]:
+                - img [ref=e613]
+                - generic [ref=e615]: Unlimited analyses
+              - listitem [ref=e616]:
+                - img [ref=e617]
+                - generic [ref=e619]: BPM detection (90-94% accuracy)
+              - listitem [ref=e620]:
+                - img [ref=e621]
+                - generic [ref=e623]: Musical key identification
+              - listitem [ref=e624]:
+                - img [ref=e625]
+                - generic [ref=e627]: Hz tuning analysis
+              - listitem [ref=e628]:
+                - img [ref=e629]
+                - generic [ref=e631]: Energy & tempo classification
+              - listitem [ref=e632]:
+                - img [ref=e633]
+                - generic [ref=e635]: All 1000+ platforms supported
+              - listitem [ref=e636]:
+                - img [ref=e637]
+                - generic [ref=e639]: Priority processing
+              - listitem [ref=e640]:
+                - img [ref=e641]
+                - generic [ref=e643]: Cancel anytime
+            - button "Upgrade Now" [ref=e644] [cursor=pointer]
+          - generic [ref=e646]:
+            - generic [ref=e648]:
+              - img [ref=e649]
+              - text: BEST VALUE
+            - generic [ref=e651]:
+              - heading "Yearly" [level=3] [ref=e652]
+              - generic [ref=e653]:
+                - generic [ref=e654]:
+                  - generic [ref=e655]: $24.99
+                  - generic [ref=e656]: /per year
+                - generic:
+                  - generic: Save $23.89/year
+              - paragraph [ref=e657]: Best Value
+            - list [ref=e658]:
+              - listitem [ref=e659]:
+                - img [ref=e660]
+                - generic [ref=e662]: Unlimited analyses
+              - listitem [ref=e663]:
+                - img [ref=e664]
+                - generic [ref=e666]: BPM detection (90-94% accuracy)
+              - listitem [ref=e667]:
+                - img [ref=e668]
+                - generic [ref=e670]: Musical key identification
+              - listitem [ref=e671]:
+                - img [ref=e672]
+                - generic [ref=e674]: Hz tuning analysis
+              - listitem [ref=e675]:
+                - img [ref=e676]
+                - generic [ref=e678]: Energy & tempo classification
+              - listitem [ref=e679]:
+                - img [ref=e680]
+                - generic [ref=e682]: All 1000+ platforms supported
+              - listitem [ref=e683]:
+                - img [ref=e684]
+                - generic [ref=e686]: Priority processing
+              - listitem [ref=e687]:
+                - img [ref=e688]
+                - generic [ref=e690]: Cancel anytime
+              - listitem [ref=e691]:
+                - img [ref=e692]
+                - generic [ref=e694]: Early access to new features
+            - button "Get Best Value" [ref=e695] [cursor=pointer]
+        - generic [ref=e696]:
+          - generic [ref=e697]:
+            - img [ref=e698]
+            - generic [ref=e700]: 30-day money-back guarantee
+          - paragraph [ref=e701]: Not satisfied? Get a full refund within 30 days, no questions asked. We're confident you'll love our service.
+        - paragraph [ref=e702]: All prices in USD. Taxes may apply. Cancel anytime.
+      - generic [ref=e708]:
+        - generic [ref=e709]:
+          - generic [ref=e710]: ❓ Got Questions?
+          - heading "Frequently Asked Questions" [level=2] [ref=e711]
+          - paragraph [ref=e712]: Find answers to common questions about our music analysis service.
+        - generic [ref=e714]:
+          - heading "How accurate is the BPM detection?" [level=3] [ref=e717]:
+            - button "How accurate is the BPM detection?" [ref=e718] [cursor=pointer]:
+              - text: How accurate is the BPM detection?
+              - img [ref=e719]
+          - heading "What platforms are supported?" [level=3] [ref=e723]:
+            - button "What platforms are supported?" [ref=e724] [cursor=pointer]:
+              - text: What platforms are supported?
+              - img [ref=e725]
+          - heading "How long does analysis take?" [level=3] [ref=e729]:
+            - button "How long does analysis take?" [ref=e730] [cursor=pointer]:
+              - text: How long does analysis take?
+              - img [ref=e731]
+          - heading "Do I need to create an account?" [level=3] [ref=e735]:
+            - button "Do I need to create an account?" [ref=e736] [cursor=pointer]:
+              - text: Do I need to create an account?
+              - img [ref=e737]
+          - heading "What's included in the free tier?" [level=3] [ref=e741]:
+            - button "What's included in the free tier?" [ref=e742] [cursor=pointer]:
+              - text: What's included in the free tier?
+              - img [ref=e743]
+          - heading "Can I cancel my subscription anytime?" [level=3] [ref=e747]:
+            - button "Can I cancel my subscription anytime?" [ref=e748] [cursor=pointer]:
+              - text: Can I cancel my subscription anytime?
+              - img [ref=e749]
+          - heading "Is my music data safe?" [level=3] [ref=e753]:
+            - button "Is my music data safe?" [ref=e754] [cursor=pointer]:
+              - text: Is my music data safe?
+              - img [ref=e755]
+          - heading "What file formats are supported?" [level=3] [ref=e759]:
+            - button "What file formats are supported?" [ref=e760] [cursor=pointer]:
+              - text: What file formats are supported?
+              - img [ref=e761]
+          - heading "What else is detected besides BPM?" [level=3] [ref=e765]:
+            - button "What else is detected besides BPM?" [ref=e766] [cursor=pointer]:
+              - text: What else is detected besides BPM?
+              - img [ref=e767]
+          - heading "How does the pricing work?" [level=3] [ref=e771]:
+            - button "How does the pricing work?" [ref=e772] [cursor=pointer]:
+              - text: How does the pricing work?
+              - img [ref=e773]
+        - generic [ref=e775]:
+          - paragraph [ref=e776]: Still have questions? We're here to help!
+          - button "Ask in Telegram" [ref=e777] [cursor=pointer]:
+            - img
+            - text: Ask in Telegram
+          - paragraph [ref=e778]: Get instant answers from our support team
+  - button "Open Next.js Dev Tools" [ref=e786] [cursor=pointer]:
+    - img [ref=e787]
+  - alert [ref=e790]
+```

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -18,10 +18,8 @@ type DemoStage = "idle" | "uploading" | "analyzing-bpm" | "detecting-key" | "com
 
 interface AnalysisResult {
   bpm: string;
-  key: string;
+  key: string | React.ReactElement;
   hz: string;
-  energy: string;
-  tempo: string;
 }
 
 const stages = [
@@ -30,6 +28,58 @@ const stages = [
   { id: "detecting-key", label: "Detecting Key & Hz...", icon: Music, progress: 75 },
   { id: "complete", label: "Analysis complete!", icon: CheckCircle2, progress: 100 },
 ];
+
+// Musical keys with their relative keys
+const musicalKeys = [
+  { main: "C major", relative: "A minor" },
+  { main: "G major", relative: "E minor" },
+  { main: "D major", relative: "B minor" },
+  { main: "A major", relative: "F♯ minor" },
+  { main: "E major", relative: "C♯ minor" },
+  { main: "B major", relative: "G♯ minor" },
+  { main: "F♯ major", relative: "D♯ minor" },
+  { main: "D♭ major", relative: "B♭ minor" },
+  { main: "A♭ major", relative: "F minor" },
+  { main: "E♭ major", relative: "C minor" },
+  { main: "B♭ major", relative: "G minor" },
+  { main: "F major", relative: "D minor" },
+  { main: "A minor", relative: "C major" },
+  { main: "E minor", relative: "G major" },
+  { main: "B minor", relative: "D major" },
+  { main: "F♯ minor", relative: "A major" },
+  { main: "C♯ minor", relative: "E major" },
+  { main: "G♯ minor", relative: "B major" },
+  { main: "D♯ minor", relative: "F♯ major" },
+  { main: "B♭ minor", relative: "D♭ major" },
+  { main: "F minor", relative: "A♭ major" },
+  { main: "C minor", relative: "E♭ major" },
+  { main: "G minor", relative: "B♭ major" },
+  { main: "D minor", relative: "F major" },
+];
+
+// Common reference frequencies (A4)
+const referenceFrequencies = [432, 440, 442, 444, 445, 415, 438, 443];
+
+function getRandomBPM(): string {
+  const bpm = Math.floor(Math.random() * (190 - 70 + 1)) + 70;
+  const decimal = Math.floor(Math.random() * 10);
+  return `${bpm}.${decimal}`;
+}
+
+function getRandomKey(): React.ReactElement {
+  const keyPair = musicalKeys[Math.floor(Math.random() * musicalKeys.length)];
+  return (
+    <>
+      {keyPair.main} <span className="text-sm italic text-zinc-400">({keyPair.relative})</span>
+    </>
+  );
+}
+
+function getRandomHz(): string {
+  return referenceFrequencies[
+    Math.floor(Math.random() * referenceFrequencies.length)
+  ].toString();
+}
 
 export function LiveDemo() {
   const [currentStage, setCurrentStage] = useState<DemoStage>("idle");
@@ -48,10 +98,11 @@ export function LiveDemo() {
     const stageIndex = stages.findIndex((s) => s.id === currentStage);
     if (stageIndex === -1) return;
 
+    const startProgress = progress;
     const targetProgress = stages[stageIndex].progress;
     const duration = 3500; // 3.5 seconds per stage
     const steps = 50;
-    const increment = (targetProgress - progress) / steps;
+    const increment = (targetProgress - startProgress) / steps;
     const stepDuration = duration / steps;
 
     let currentStep = 0;
@@ -71,11 +122,9 @@ export function LiveDemo() {
           setTimeout(() => {
             setCurrentStage("complete");
             setResults({
-              bpm: "128.5",
-              key: "A minor",
-              hz: "+5.3 cents",
-              energy: "High",
-              tempo: "Fast",
+              bpm: getRandomBPM(),
+              key: getRandomKey(),
+              hz: getRandomHz(),
             });
           }, 300);
         }
@@ -83,7 +132,8 @@ export function LiveDemo() {
     }, stepDuration);
 
     return () => clearInterval(interval);
-  }, [currentStage, progress]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentStage]);
 
   const resetDemo = () => {
     setCurrentStage("idle");
@@ -92,7 +142,7 @@ export function LiveDemo() {
   };
 
   return (
-    <section className="relative py-20 px-4 sm:px-6 lg:px-8 bg-black overflow-hidden">
+    <section id="demo" className="relative py-20 px-4 sm:px-6 lg:px-8 bg-black overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,var(--tw-gradient-stops))] from-cyan-900/20 via-black to-black" />
       
@@ -280,7 +330,7 @@ export function LiveDemo() {
                   </div>
 
                   {/* Results Grid */}
-                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                  <div className="grid grid-cols-3 gap-4">
                     {Object.entries(results).map(([key, value], index) => (
                       <motion.div
                         key={key}
@@ -290,7 +340,7 @@ export function LiveDemo() {
                         className="p-4 rounded-lg bg-zinc-800/50 border border-zinc-700/50 hover:border-cyan-500/30 transition-colors"
                       >
                         <p className="text-xs uppercase text-zinc-500 mb-1 font-semibold">
-                          {key.replace("-", " ")}
+                          {key === "bpm" ? "BPM" : key === "key" ? "Key" : "Hz"}
                         </p>
                         <p className="text-xl font-bold text-white">
                           {value}

@@ -8,4 +8,5 @@ export { useScrollProgress } from "./useScrollProgress";
 export { useIntersectionObserver } from "./useIntersectionObserver";
 export { useKeyPress, useKeyboardShortcut } from "./useKeyPress";
 export { useCopyToClipboard } from "./useCopyToClipboard";
+export { useReducedMotion } from "./useReducedMotion";
 
