@@ -247,7 +247,7 @@ colors: {
 ### CTA Links
 Edit `lib/constants/cta.ts`:
 ```ts
-export const TELEGRAM_BOT_URL = "https://t.me/your_bot_name";
+export const TELEGRAM_BOT_URL = "https://t.me/lufs_loader_bot";
 ```
 
 ---

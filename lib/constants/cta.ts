@@ -24,5 +24,5 @@ export const URGENCY = {
   text: "🔥 Free tier ending soon",
 } as const;
 
-export const TELEGRAM_BOT_URL = "https://t.me/your_bot_name";
+export const TELEGRAM_BOT_URL = "https://t.me/lufs_loader_bot";
 

@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Check, Zap, TrendingUp, Crown } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { TELEGRAM_BOT_URL } from "@/lib/constants/cta";
 
 interface PricingPlan {
   name: string;
@@ -200,7 +201,7 @@ function PricingCard({ plan, index }: { plan: PricingPlan; index: number }) {
             plan.highlighted &&
               "bg-linear-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white border-none"
           )}
-          onClick={() => window.open("https://t.me/your_bot", "_blank")}
+          onClick={() => window.open(TELEGRAM_BOT_URL, "_blank")}
         >
           {plan.buttonText}
         </Button>
@@ -252,23 +253,38 @@ export function Pricing() {
             💎 Simple Pricing
           </motion.span>
 
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold">
             <span className="bg-linear-to-r from-white via-cyan-100 to-cyan-400 bg-clip-text text-transparent">
               Choose Your Plan
             </span>
           </h2>
 
-          <p className="text-lg text-zinc-400 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-zinc-400 max-w-2xl mx-auto">
             Start free, upgrade when you need more.
             All plans include full feature access.
           </p>
         </motion.div>
 
         {/* Pricing Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {plans.map((plan, index) => (
-            <PricingCard key={index} plan={plan} index={index} />
-          ))}
+        <div className="relative max-w-6xl mx-auto">
+          {/* Mobile: Horizontal scroll */}
+          <div className="md:grid md:grid-cols-3 gap-8 flex md:flex-none overflow-x-auto snap-x snap-mandatory scrollbar-hide -mx-4 px-4 sm:mx-0 sm:px-0 pb-2">
+            {plans.map((plan, index) => (
+              <div key={index} className="min-w-[85vw] sm:min-w-[70vw] md:min-w-0 snap-center">
+                <PricingCard plan={plan} index={index} />
+              </div>
+            ))}
+          </div>
+          
+          {/* Scroll indicators for mobile */}
+          <div className="flex md:hidden justify-center gap-2 mt-6">
+            {plans.map((_, i) => (
+              <div 
+                key={i} 
+                className="h-2 w-2 rounded-full bg-zinc-700 transition-colors"
+              />
+            ))}
+          </div>
         </div>
 
         {/* Money-back Guarantee */}

@@ -92,13 +92,13 @@ export function Features() {
             ⚡ Powerful Features
           </motion.span>
 
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold">
             <span className="bg-linear-to-r from-white via-cyan-100 to-cyan-400 bg-clip-text text-transparent">
               Everything You Need
             </span>
           </h2>
 
-          <p className="text-lg text-zinc-400 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-zinc-400 max-w-2xl mx-auto">
             Professional-grade music analysis tools at your fingertips.
             Fast, accurate, and incredibly easy to use.
           </p>

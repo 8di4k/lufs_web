@@ -58,29 +58,30 @@ export function Stats() {
       <div className="container relative z-10 mx-auto px-4">
         {/* Section header */}
         <div className="mb-16 text-center">
-          <h2 className="mb-4 bg-linear-to-r from-neon-green via-neon-cyan to-neon-purple bg-clip-text text-4xl font-bold text-transparent md:text-5xl">
+          <h2 className="mb-4 bg-linear-to-r from-neon-green via-neon-cyan to-neon-purple bg-clip-text text-3xl font-bold text-transparent sm:text-4xl md:text-5xl">
             Powered by Numbers
           </h2>
-          <p className="mx-auto max-w-2xl text-lg text-gray-400">
+          <p className="mx-auto max-w-2xl text-base sm:text-lg text-gray-400">
             Industry-leading accuracy, speed, and coverage. See why thousands
             trust LUFS Music Analyzer.
           </p>
         </div>
 
         {/* Stats grid */}
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="flex lg:grid gap-6 lg:grid-cols-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4 -mx-4 px-4 lg:mx-0 lg:px-0">
           {statsData.map((stat, index) => (
-            <StatsCard
-              key={index}
-              value={stat.value}
-              label={stat.label}
-              suffix={stat.suffix}
-              prefix={stat.prefix}
-              decimals={stat.decimals}
-              icon={stat.icon}
-              description={stat.description}
-              comparisonBadge={stat.comparisonBadge}
-            />
+            <div key={index} className="min-w-[280px] lg:min-w-0 snap-start">
+              <StatsCard
+                value={stat.value}
+                label={stat.label}
+                suffix={stat.suffix}
+                prefix={stat.prefix}
+                decimals={stat.decimals}
+                icon={stat.icon}
+                description={stat.description}
+                comparisonBadge={stat.comparisonBadge}
+              />
+            </div>
           ))}
         </div>
       </div>

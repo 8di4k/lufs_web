@@ -123,13 +123,13 @@ export function Comparison() {
             🔥 Why We're Better
           </motion.span>
 
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold">
             <span className="bg-linear-to-r from-white via-cyan-100 to-cyan-400 bg-clip-text text-transparent">
               Better Than The Rest
             </span>
           </h2>
 
-          <p className="text-lg text-zinc-400 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-zinc-400 max-w-2xl mx-auto">
             See how we stack up against the competition. We lead in speed,
             accuracy, and value.
           </p>

@@ -13,6 +13,7 @@ import {
   RefreshCw,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { TELEGRAM_BOT_URL } from "@/lib/constants/cta";
 
 type DemoStage = "idle" | "uploading" | "analyzing-bpm" | "detecting-key" | "complete";
 
@@ -165,13 +166,13 @@ export function LiveDemo() {
             🎵 Try It Out
           </motion.span>
 
-          <h2 className="text-4xl sm:text-5xl font-bold">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold">
             <span className="bg-linear-to-r from-white via-cyan-100 to-cyan-400 bg-clip-text text-transparent">
               See It In Action
             </span>
           </h2>
 
-          <p className="text-lg text-zinc-400 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-zinc-400 max-w-2xl mx-auto">
             Watch how fast and accurate our analysis engine works.
             This is a demo preview of the actual bot experience.
           </p>
@@ -330,7 +331,7 @@ export function LiveDemo() {
                   </div>
 
                   {/* Results Grid */}
-                  <div className="grid grid-cols-3 gap-4">
+                  <div className="grid grid-cols-1 min-[400px]:grid-cols-3 gap-4">
                     {Object.entries(results).map(([key, value], index) => (
                       <motion.div
                         key={key}
@@ -342,7 +343,7 @@ export function LiveDemo() {
                         <p className="text-xs uppercase text-zinc-500 mb-1 font-semibold">
                           {key === "bpm" ? "BPM" : key === "key" ? "Key" : "Hz"}
                         </p>
-                        <p className="text-xl font-bold text-white">
+                        <p className="text-lg sm:text-xl font-bold text-white">
                           {value}
                         </p>
                       </motion.div>
@@ -364,7 +365,7 @@ export function LiveDemo() {
                     <Button
                       size="lg"
                       className="flex-1 bg-linear-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-semibold"
-                      onClick={() => window.open("https://t.me/your_bot", "_blank")}
+                      onClick={() => window.open(TELEGRAM_BOT_URL, "_blank")}
                     >
                       Try Real Bot
                     </Button>

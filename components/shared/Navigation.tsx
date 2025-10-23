@@ -8,6 +8,7 @@ import { ThemeToggle } from "./ThemeToggle";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { useMediaQuery } from "@/lib/hooks";
+import { TELEGRAM_BOT_URL } from "@/lib/constants/cta";
 
 interface NavLink {
   href: string;
@@ -99,7 +100,7 @@ export function Navigation() {
                       "transition-all duration-300"
                     )}
                   >
-                    <Link href="https://t.me/your_bot" target="_blank" rel="noopener noreferrer">
+                    <Link href={TELEGRAM_BOT_URL} target="_blank" rel="noopener noreferrer">
                       Open in Telegram
                     </Link>
                   </Button>
@@ -179,7 +180,7 @@ export function Navigation() {
                 "transition-all duration-300"
               )}
             >
-              <Link href="https://t.me/your_bot" target="_blank" rel="noopener noreferrer">
+              <Link href={TELEGRAM_BOT_URL} target="_blank" rel="noopener noreferrer">
                 Open in Telegram
               </Link>
             </Button>

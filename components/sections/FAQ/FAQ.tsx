@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { MessageCircle } from "lucide-react";
+import { TELEGRAM_BOT_URL } from "@/lib/constants/cta";
 
 const faqs = [
   {
@@ -89,13 +90,13 @@ export function FAQ() {
             ❓ Got Questions?
           </motion.span>
 
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold">
             <span className="bg-linear-to-r from-white via-cyan-100 to-cyan-400 bg-clip-text text-transparent">
               Frequently Asked Questions
             </span>
           </h2>
 
-          <p className="text-lg text-zinc-400 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-zinc-400 max-w-2xl mx-auto">
             Find answers to common questions about our music analysis service.
           </p>
         </motion.div>
@@ -151,7 +152,7 @@ export function FAQ() {
           <Button
             size="lg"
             className="bg-linear-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-semibold px-8"
-            onClick={() => window.open("https://t.me/your_bot", "_blank")}
+            onClick={() => window.open(TELEGRAM_BOT_URL, "_blank")}
           >
             <MessageCircle className="w-5 h-5 mr-2" />
             Ask in Telegram

@@ -83,17 +83,17 @@ export function SocialProof() {
           >
             Trusted by Thousands
           </Badge>
-          <h2 className="mb-4 bg-linear-to-r from-neon-green via-neon-cyan to-neon-purple bg-clip-text text-4xl font-bold text-transparent md:text-5xl">
+          <h2 className="mb-4 bg-linear-to-r from-neon-green via-neon-cyan to-neon-purple bg-clip-text text-3xl font-bold text-transparent sm:text-4xl md:text-5xl">
             Join the Community
           </h2>
-          <p className="mx-auto max-w-2xl text-lg text-gray-400">
+          <p className="mx-auto max-w-2xl text-base sm:text-lg text-gray-400">
             Thousands of musicians, producers, and audio engineers trust LUFS
             Music Analyzer for their audio analysis needs.
           </p>
         </div>
 
         {/* Trust indicators grid */}
-        <div className="mb-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mb-16 grid gap-6 sm:gap-8 grid-cols-1 min-[500px]:grid-cols-2 lg:grid-cols-4">
           {trustIndicators.map((indicator, index) => (
             <div
               key={index}
@@ -102,7 +102,7 @@ export function SocialProof() {
               <div className={`${indicator.color}`}>{indicator.icon}</div>
               <div className="text-center">
                 <div
-                  className={`mb-2 text-4xl font-bold ${indicator.color} md:text-5xl`}
+                  className={`mb-2 text-3xl font-bold ${indicator.color} sm:text-4xl md:text-5xl`}
                 >
                   {hasAnimated ? (
                     <CountUp
@@ -117,7 +117,7 @@ export function SocialProof() {
                     `0${indicator.suffix}`
                   )}
                 </div>
-                <p className="text-sm text-gray-400">{indicator.label}</p>
+                <p className="text-xs sm:text-sm text-gray-400">{indicator.label}</p>
               </div>
             </div>
           ))}
