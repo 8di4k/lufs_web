@@ -149,18 +149,19 @@ export function Navigation() {
             "animate-fade-in"
           )}
         >
-          <div className="container mx-auto px-4 pt-24">
-            <nav aria-label="Mobile navigation">
-              <ul className="flex flex-col gap-6">
-                {navLinks.map((link) => (
-                  <li key={link.href}>
+          <div className="container mx-auto px-4 pt-20 flex flex-col h-full">
+            <nav aria-label="Mobile navigation" className="flex-1 flex items-center justify-center">
+              <ul className="flex flex-col gap-8 text-center">
+                {navLinks.map((link, index) => (
+                  <li key={link.href} style={{ animationDelay: `${index * 100}ms` }} className="animate-fade-in-up">
                     <Link
                       href={link.href}
                       onClick={() => handleLinkClick(link.href)}
                       className={cn(
-                        "block text-2xl font-medium text-foreground",
-                        "hover:text-neon-green transition-colors duration-200",
-                        "hover:drop-shadow-[0_0_8px_rgba(0,255,136,0.6)]"
+                        "block text-3xl font-semibold text-foreground",
+                        "hover:text-neon-green transition-all duration-200",
+                        "hover:drop-shadow-[0_0_10px_rgba(0,255,136,0.8)]",
+                        "active:scale-95"
                       )}
                     >
                       {link.label}
@@ -170,20 +171,28 @@ export function Navigation() {
               </ul>
             </nav>
 
-            <Button
-              asChild
-              className={cn(
-                "mt-8 w-full",
-                "bg-linear-to-r from-neon-green to-neon-cyan",
-                "text-dark font-semibold",
-                "hover:shadow-glow-green-strong",
-                "transition-all duration-300"
-              )}
-            >
-              <Link href={TELEGRAM_BOT_URL} target="_blank" rel="noopener noreferrer">
-                Open in Telegram
-              </Link>
-            </Button>
+            <div className="pb-8 space-y-4">
+              <Button
+                asChild
+                size="lg"
+                className={cn(
+                  "w-full",
+                  "bg-linear-to-r from-neon-green to-neon-cyan",
+                  "text-dark font-semibold text-base",
+                  "hover:shadow-glow-green-strong",
+                  "transition-all duration-300",
+                  "active:scale-95"
+                )}
+              >
+                <Link href={TELEGRAM_BOT_URL} target="_blank" rel="noopener noreferrer">
+                  Open in Telegram
+                </Link>
+              </Button>
+              
+              <p className="text-center text-sm text-gray-500">
+                Tap anywhere to close
+              </p>
+            </div>
           </div>
         </div>
       )}

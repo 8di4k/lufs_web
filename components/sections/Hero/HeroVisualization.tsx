@@ -1,113 +1,120 @@
 "use client";
 
-import { useRef, useEffect, useState, Suspense } from "react";
+import { useRef, useEffect, useState, Suspense, memo } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Stars, OrbitControls } from "@react-three/drei";
+import { Stars } from "@react-three/drei";
 import * as THREE from "three";
 
-// Audio visualizer bars component
-function AudioBars() {
-  const groupRef = useRef<THREE.Group>(null);
+// Audio visualizer waveform component - realistic audio bars
+const AudioWaveform = memo(function AudioWaveform() {
   const barsRef = useRef<THREE.Mesh[]>([]);
-  const [scrollSpeed, setScrollSpeed] = useState(1);
+  const targetHeightsRef = useRef<number[]>([]);
+  const currentHeightsRef = useRef<number[]>([]);
+  const velocitiesRef = useRef<number[]>([]);
 
-  // Track scroll for animation speed
+  const barCount = 32; // More bars for better wave effect
+  const spacing = 0.3;
+  const baseHeight = 0.3;
+
+  // Initialize arrays
   useEffect(() => {
-    let lastScrollY = window.scrollY;
-    let ticking = false;
-
-    const updateScrollSpeed = () => {
-      const scrollY = window.scrollY;
-      const speed = Math.abs(scrollY - lastScrollY) * 0.1 + 1;
-      setScrollSpeed(speed);
-      lastScrollY = scrollY;
-      ticking = false;
-    };
-
-    const onScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(updateScrollSpeed);
-        ticking = true;
-      }
-    };
-
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+    targetHeightsRef.current = new Array(barCount).fill(baseHeight);
+    currentHeightsRef.current = new Array(barCount).fill(baseHeight);
+    velocitiesRef.current = new Array(barCount).fill(0);
+  }, [barCount]);
 
   useFrame((state) => {
-    if (groupRef.current) {
-      groupRef.current.rotation.y += 0.0005 * scrollSpeed;
-    }
+    const time = state.clock.getElapsedTime();
 
-    // Animate individual bars
     barsRef.current.forEach((bar, i) => {
       if (bar) {
-        const time = state.clock.getElapsedTime();
-        const scale = 1 + Math.sin(time * 1 + i * 0.5) * 0.5 * scrollSpeed;
-        bar.scale.y = scale;
+        // Create wave-like audio visualization with multiple frequencies
+        const lowFreq = Math.sin(time * 1.2 + i * 0.15) * 0.4;
+        const midFreq = Math.sin(time * 2.5 + i * 0.25) * 0.3;
+        const highFreq = Math.sin(time * 4.0 + i * 0.4) * 0.2;
+        
+        // Combine frequencies for realistic audio feel
+        const combined = lowFreq + midFreq + highFreq;
+        
+        // Add random "beats" effect
+        const beat = Math.sin(time * 3 + i * 0.1) > 0.7 ? 0.3 : 0;
+        
+        // Calculate target height
+        const targetHeight = baseHeight + Math.abs(combined) + beat;
+        targetHeightsRef.current[i] = targetHeight;
+
+        // Spring-like smooth interpolation for natural bounce
+        const diff = targetHeight - currentHeightsRef.current[i];
+        velocitiesRef.current[i] += diff * 0.15; // Spring stiffness
+        velocitiesRef.current[i] *= 0.85; // Damping
+        currentHeightsRef.current[i] += velocitiesRef.current[i];
+
+        // Apply height
+        bar.scale.y = Math.max(0.1, currentHeightsRef.current[i]);
+        
+        // Subtle color pulse based on intensity
+        const intensity = currentHeightsRef.current[i] / 2;
+        bar.position.y = (currentHeightsRef.current[i] - baseHeight) * 0.5;
       }
     });
   });
 
-  const barCount = 32;
-  const radius = 3;
-
   return (
-    <group ref={groupRef}>
+    <group position={[-(barCount * spacing) / 2, 0, 0]}>
       {Array.from({ length: barCount }).map((_, i) => {
-        const angle = (i / barCount) * Math.PI * 2;
-        const x = Math.cos(angle) * radius;
-        const z = Math.sin(angle) * radius;
+        const x = i * spacing;
+        
+        // Color gradient across the spectrum
+        const hue = (i / barCount) * 0.3; // Green to cyan range
+        const colors = ["#00ff88", "#00e6a0", "#00ccb8", "#00b3d0", "#00d4ff"];
+        const colorIndex = Math.floor((i / barCount) * colors.length);
+        const color = colors[colorIndex];
 
         return (
           <mesh
             key={i}
-            position={[x, 0, z]}
+            position={[x, 0, 0]}
             ref={(el) => {
               if (el) barsRef.current[i] = el;
             }}
           >
-            <boxGeometry args={[0.2, 2, 0.2]} />
-            <meshStandardMaterial
-              color={i % 3 === 0 ? "#00ff88" : i % 3 === 1 ? "#ff00ff" : "#00d4ff"}
-              emissive={i % 3 === 0 ? "#00ff88" : i % 3 === 1 ? "#ff00ff" : "#00d4ff"}
-              emissiveIntensity={0.5}
+            <boxGeometry args={[0.15, 1, 0.15]} />
+            <meshBasicMaterial
+              color={color}
+              transparent
+              opacity={0.85}
             />
           </mesh>
         );
       })}
     </group>
   );
-}
+});
 
-// Main visualization component
-function Scene() {
+// Main visualization component - optimized
+const Scene = memo(function Scene() {
+  const groupRef = useRef<THREE.Group>(null);
+
+  useFrame(() => {
+    if (groupRef.current) {
+      // Subtle rotation for dynamic 3D feel
+      groupRef.current.rotation.y += 0.002;
+      groupRef.current.rotation.x = Math.sin(Date.now() * 0.0003) * 0.1;
+    }
+  });
+
   return (
     <>
-      {/* Lighting */}
-      <ambientLight intensity={0.5} />
-      <pointLight position={[10, 10, 10]} intensity={1} />
-      <pointLight position={[-10, -10, -10]} intensity={0.5} color="#00ff88" />
+      <group ref={groupRef}>
+        {/* Audio waveform visualization */}
+        <AudioWaveform />
+      </group>
 
-      {/* Audio bars */}
-      <AudioBars />
-
-      {/* Stars background */}
-      <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade speed={0.5} />
-
-      {/* Camera controls (subtle movement) */}
-      <OrbitControls
-        enableZoom={false}
-        enablePan={false}
-        autoRotate
-        autoRotateSpeed={0.3}
-        minPolarAngle={Math.PI / 2}
-        maxPolarAngle={Math.PI / 2}
-      />
+      {/* Stars background - significantly reduced for performance */}
+      <Stars radius={100} depth={50} count={1000} factor={4} saturation={0} fade speed={0.3} />
     </>
   );
-}
+});
 
 export function HeroVisualization() {
   const [isWebGLSupported, setIsWebGLSupported] = useState(true);
@@ -150,8 +157,22 @@ export function HeroVisualization() {
     <div className="pointer-events-none absolute inset-0 opacity-20">
       <Canvas
         camera={{ position: [0, 0, 8], fov: 50 }}
-        gl={{ antialias: true, alpha: true }}
+        gl={{ 
+          antialias: false, // Disable for better performance
+          alpha: true,
+          powerPreference: "high-performance",
+          stencil: false,
+          depth: false, // Disable depth for better performance
+          precision: "lowp" // Use low precision for better performance
+        }}
+        dpr={1} // Fixed to 1 for consistent performance
         style={{ background: "transparent" }}
+        frameloop="always"
+        performance={{ 
+          min: 0.1, // More aggressive quality reduction
+          max: 1,
+          debounce: 200
+        }}
       >
         <Suspense fallback={null}>
           <Scene />

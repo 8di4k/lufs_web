@@ -15,7 +15,7 @@ const faqs = [
   {
     question: "How accurate is the BPM detection?",
     answer:
-      "Our BPM detection achieves 90-94% accuracy using 5 advanced AI models working simultaneously. Each model specializes in different aspects of tempo analysis, and we use a consensus algorithm to provide the most reliable result. This industry-leading accuracy works across all music genres.",
+      "Our BPM detection achieves 90-94% accuracy using 12 AI models working simultaneously. Core engines include DeepRhythm, Essentia, Librosa, and S-KEY. Each model specializes in different aspects of tempo analysis, and we use a consensus algorithm to provide the most reliable result. This industry-leading accuracy works across all music genres.",
   },
   {
     question: "What platforms are supported?",
@@ -66,37 +66,33 @@ const faqs = [
 
 export function FAQ() {
   return (
-    <section className="relative py-20 px-4 sm:px-6 lg:px-8 bg-black overflow-hidden">
-      {/* Background Effects */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,var(--tw-gradient-stops))] from-cyan-900/20 via-black to-black" />
-      <div className="absolute inset-0 bg-grid-white/[0.02]" />
-
+    <section id="faq" className="relative py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-black overflow-hidden">
       <div className="relative z-10 max-w-4xl mx-auto">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16 space-y-4"
+          className="text-center mb-12 sm:mb-16 space-y-3 sm:space-y-4"
         >
           <motion.span
-            className="inline-block px-4 py-1 rounded-full text-sm font-semibold text-cyan-400 bg-cyan-500/10 border border-cyan-500/20"
+            className="inline-block px-3 sm:px-4 py-1 rounded-full text-xs sm:text-sm font-semibold text-cyan-400 bg-cyan-500/10 border border-cyan-500/20"
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             transition={{ duration: 0.5 }}
           >
             ❓ Got Questions?
           </motion.span>
 
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold px-2">
             <span className="bg-linear-to-r from-white via-cyan-100 to-cyan-400 bg-clip-text text-transparent">
               Frequently Asked Questions
             </span>
           </h2>
 
-          <p className="text-base sm:text-lg text-zinc-400 max-w-2xl mx-auto">
+          <p className="text-sm sm:text-base md:text-lg text-zinc-400 max-w-2xl mx-auto px-4">
             Find answers to common questions about our music analysis service.
           </p>
         </motion.div>
@@ -105,7 +101,7 @@ export function FAQ() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
           <Accordion
@@ -118,17 +114,17 @@ export function FAQ() {
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
+                viewport={{ once: false, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: index * 0.05 }}
               >
                 <AccordionItem
                   value={`item-${index}`}
-                  className="border border-zinc-800/50 rounded-lg px-6 bg-zinc-900/30 hover:bg-zinc-900/50 hover:border-cyan-500/30 transition-all duration-300"
+                  className="border border-zinc-800/50 rounded-lg px-4 sm:px-6 bg-zinc-900/30 hover:bg-zinc-900/50 hover:border-cyan-500/30 transition-all duration-300"
                 >
-                  <AccordionTrigger className="text-left text-white hover:text-cyan-400 transition-colors py-5 text-base sm:text-lg font-semibold hover:no-underline">
+                  <AccordionTrigger className="text-left text-white hover:text-cyan-400 transition-colors py-4 sm:py-5 text-sm sm:text-base md:text-lg font-semibold hover:no-underline">
                     {faq.question}
                   </AccordionTrigger>
-                  <AccordionContent className="text-zinc-400 leading-relaxed pb-5">
+                  <AccordionContent className="text-zinc-400 leading-relaxed pb-4 sm:pb-5 text-sm sm:text-base">
                     {faq.answer}
                   </AccordionContent>
                 </AccordionItem>
@@ -141,32 +137,28 @@ export function FAQ() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-12 text-center space-y-4"
+          className="mt-10 sm:mt-12 text-center space-y-3 sm:space-y-4"
         >
-          <p className="text-zinc-400">
+          <p className="text-sm sm:text-base text-zinc-400">
             Still have questions? We're here to help!
           </p>
           
           <Button
             size="lg"
-            className="bg-linear-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-semibold px-8"
+            className="w-full sm:w-auto bg-linear-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-semibold px-6 sm:px-8 active:scale-95 transition-all"
             onClick={() => window.open(TELEGRAM_BOT_URL, "_blank")}
           >
-            <MessageCircle className="w-5 h-5 mr-2" />
+            <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
             Ask in Telegram
           </Button>
 
-          <p className="text-sm text-zinc-500">
+          <p className="text-xs sm:text-sm text-zinc-500">
             Get instant answers from our support team
           </p>
         </motion.div>
       </div>
-
-      {/* Decorative Elements */}
-      <div className="absolute -bottom-32 -left-32 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl" />
-      <div className="absolute -top-32 -right-32 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
     </section>
   );
 }

@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+  # Next.js приложение
+  lufs-web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: lufs-web
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+    ports:
+      - "3000:3000"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - lufs-network
+
+  # Nginx (прокси на порт 80)
+  nginx:
+    image: nginx:alpine
+    container_name: lufs-nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx-docker.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./logs/nginx:/var/log/nginx
+      # Для SSL сертификатов (если используете):
+      # - /etc/letsencrypt:/etc/letsencrypt:ro
+    depends_on:
+      - lufs-web
+    networks:
+      - lufs-network
+    healthcheck:
+      test: ["CMD", "nginx", "-t"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+networks:
+  lufs-network:
+    driver: bridge
+
+volumes:
+  nginx-logs:
+

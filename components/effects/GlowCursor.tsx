@@ -1,19 +1,23 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { useReducedMotion } from "@/lib/hooks";
 
 export function GlowCursor() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isVisible, setIsVisible] = useState(false);
   const prefersReducedMotion = useReducedMotion();
+  const cursorRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (prefersReducedMotion) return;
 
+    // Use ref and direct DOM manipulation instead of state for better performance
     const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
+      if (cursorRef.current) {
+        // Use transform for better performance (GPU accelerated)
+        cursorRef.current.style.transform = `translate(${e.clientX - 16}px, ${e.clientY - 16}px)`;
+      }
       if (!isVisible) setIsVisible(true);
     };
 
@@ -21,7 +25,8 @@ export function GlowCursor() {
       setIsVisible(false);
     };
 
-    window.addEventListener("mousemove", handleMouseMove);
+    // Use passive event listener for better scroll performance
+    window.addEventListener("mousemove", handleMouseMove, { passive: true });
     document.addEventListener("mouseleave", handleMouseLeave);
 
     return () => {
@@ -34,12 +39,13 @@ export function GlowCursor() {
 
   return (
     <motion.div
-      className="pointer-events-none fixed z-50 h-8 w-8 rounded-full"
+      ref={cursorRef}
+      className="pointer-events-none fixed z-50 h-8 w-8 rounded-full will-change-transform"
       style={{
         background:
           "radial-gradient(circle, rgba(0,255,136,0.3) 0%, rgba(0,255,136,0) 70%)",
-        left: mousePosition.x - 16,
-        top: mousePosition.y - 16,
+        left: 0,
+        top: 0,
       }}
       animate={{
         scale: [1, 1.2, 1],

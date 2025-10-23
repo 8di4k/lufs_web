@@ -46,8 +46,7 @@ export function ShareButton({
         setIsShared(true);
         setTimeout(() => setIsShared(false), 2000);
       } catch (error) {
-        // User cancelled or error occurred
-        console.log("Share cancelled or failed", error);
+        // User cancelled or error occurred - silently ignore
       }
     } else {
       // Fallback to copying URL to clipboard

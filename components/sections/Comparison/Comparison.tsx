@@ -87,7 +87,7 @@ function StatusIcon({
     <motion.div
       initial={animated ? { scale: 0, rotate: -180 } : {}}
       whileInView={animated ? { scale: 1, rotate: 0 } : {}}
-      viewport={{ once: true }}
+      viewport={{ once: false }}
       transition={{ type: "spring", duration: 0.5 }}
     >
       <Icon className={cn("w-5 h-5", colorClass)} />
@@ -99,37 +99,33 @@ export function Comparison() {
   const isMobile = useMediaQuery("(max-width: 768px)");
 
   return (
-    <section className="relative pt-28 pb-20 px-4 sm:px-6 lg:px-8 bg-black overflow-hidden">
-      {/* Background Effects */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,var(--tw-gradient-stops))] from-cyan-900/20 via-black to-black" />
-      <div className="absolute inset-0 bg-grid-white/[0.02]" />
-
+    <section className="relative py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-black overflow-hidden">
       <div className="relative z-10 max-w-6xl mx-auto">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16 space-y-4"
+          className="text-center mb-12 sm:mb-16 space-y-3 sm:space-y-4"
         >
           <motion.span
-            className="inline-block px-4 py-1 rounded-full text-sm font-semibold text-cyan-400 bg-cyan-500/10 border border-cyan-500/20"
+            className="inline-block px-3 sm:px-4 py-1 rounded-full text-xs sm:text-sm font-semibold text-cyan-400 bg-cyan-500/10 border border-cyan-500/20"
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             transition={{ duration: 0.5 }}
           >
             🔥 Why We're Better
           </motion.span>
 
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold px-2">
             <span className="bg-linear-to-r from-white via-cyan-100 to-cyan-400 bg-clip-text text-transparent">
               Better Than The Rest
             </span>
           </h2>
 
-          <p className="text-base sm:text-lg text-zinc-400 max-w-2xl mx-auto">
+          <p className="text-sm sm:text-base md:text-lg text-zinc-400 max-w-2xl mx-auto px-4">
             See how we stack up against the competition. We lead in speed,
             accuracy, and value.
           </p>
@@ -140,7 +136,7 @@ export function Comparison() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="overflow-visible rounded-xl border border-zinc-800/50"
           >
@@ -180,7 +176,7 @@ export function Comparison() {
                   className="contents"
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: false }}
                   transition={{ duration: 0.5, delay: index * 0.05 }}
                 >
                   {/* Feature Name */}
@@ -229,14 +225,14 @@ export function Comparison() {
         {/* Mobile: Tabs Layout */}
         {isMobile && (
           <Tabs defaultValue="us" className="w-full">
-            <TabsList className="w-full grid grid-cols-3 h-auto gap-2 bg-zinc-900/50 p-2">
+            <TabsList className="w-full grid grid-cols-3 h-auto gap-1.5 bg-zinc-900/50 p-1.5 rounded-lg">
               <TabsTrigger
                 value="us"
-                className="data-[state=active]:bg-cyan-500/20 data-[state=active]:text-cyan-400 py-3"
+                className="data-[state=active]:bg-cyan-500/20 data-[state=active]:text-cyan-400 py-2.5 rounded-md transition-all"
               >
-                <div className="flex flex-col items-center gap-1">
-                  <span className="font-semibold text-sm">Us</span>
-                  <Badge className="bg-cyan-500 text-white text-xs px-1 py-0 border-none">
+                <div className="flex flex-col items-center gap-0.5">
+                  <span className="font-semibold text-xs">Us</span>
+                  <Badge className="bg-cyan-500 text-white text-[10px] px-1 py-0 border-none">
                     ⭐
                   </Badge>
                 </div>
@@ -244,40 +240,40 @@ export function Comparison() {
               
               <TabsTrigger
                 value="competitorA"
-                className="data-[state=active]:bg-zinc-700 py-3"
+                className="data-[state=active]:bg-zinc-700 py-2.5 rounded-md transition-all"
               >
-                <span className="text-sm">Competitor A</span>
+                <span className="text-xs">Competitor A</span>
               </TabsTrigger>
               
               <TabsTrigger
                 value="competitorB"
-                className="data-[state=active]:bg-zinc-700 py-3"
+                className="data-[state=active]:bg-zinc-700 py-2.5 rounded-md transition-all"
               >
-                <span className="text-sm">Competitor B</span>
+                <span className="text-xs">Competitor B</span>
               </TabsTrigger>
             </TabsList>
 
             {/* Us */}
-            <TabsContent value="us" className="mt-6">
-              <Card className="bg-linear-to-br from-cyan-500/5 to-blue-500/5 border border-cyan-500/30 p-6">
-                <h3 className="text-xl font-bold text-cyan-400 mb-6 text-center">
+            <TabsContent value="us" className="mt-4">
+              <Card className="bg-linear-to-br from-cyan-500/5 to-blue-500/5 border border-cyan-500/30 p-4 sm:p-6">
+                <h3 className="text-lg sm:text-xl font-bold text-cyan-400 mb-4 sm:mb-6 text-center">
                   LUFS Analyzer
                 </h3>
-                <div className="space-y-4">
+                <div className="space-y-3 sm:space-y-4">
                   {features.map((feature, index) => (
                     <motion.div
                       key={index}
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: index * 0.05 }}
-                      className="flex items-center justify-between p-4 rounded-lg bg-zinc-900/50 border border-zinc-800/50"
+                      className="flex items-center justify-between p-3 sm:p-4 rounded-lg bg-zinc-900/50 border border-zinc-800/50"
                     >
-                      <span className="font-medium text-white">
+                      <span className="font-medium text-white text-sm sm:text-base">
                         {feature.feature}
                       </span>
-                      <div className="flex items-center gap-2">
+                      <div className="flex items-center gap-1.5 sm:gap-2">
                         <StatusIcon status={feature.us.status} />
-                        <span className="font-semibold text-cyan-100">
+                        <span className="font-semibold text-cyan-100 text-sm sm:text-base">
                           {feature.us.label}
                         </span>
                       </div>
@@ -288,24 +284,24 @@ export function Comparison() {
             </TabsContent>
 
             {/* Competitor A */}
-            <TabsContent value="competitorA" className="mt-6">
-              <Card className="bg-zinc-900/50 border border-zinc-800/50 p-6">
-                <h3 className="text-xl font-bold text-zinc-300 mb-6 text-center">
+            <TabsContent value="competitorA" className="mt-4">
+              <Card className="bg-zinc-900/50 border border-zinc-800/50 p-4 sm:p-6">
+                <h3 className="text-lg sm:text-xl font-bold text-zinc-300 mb-4 sm:mb-6 text-center">
                   Competitor A
                 </h3>
-                <div className="space-y-4">
+                <div className="space-y-3 sm:space-y-4">
                   {features.map((feature, index) => (
                     <motion.div
                       key={index}
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: index * 0.05 }}
-                      className="flex items-center justify-between p-4 rounded-lg bg-zinc-800/50"
+                      className="flex items-center justify-between p-3 sm:p-4 rounded-lg bg-zinc-800/50"
                     >
-                      <span className="text-zinc-400">{feature.feature}</span>
-                      <div className="flex items-center gap-2">
+                      <span className="text-zinc-400 text-sm sm:text-base">{feature.feature}</span>
+                      <div className="flex items-center gap-1.5 sm:gap-2">
                         <StatusIcon status={feature.competitorA.status} />
-                        <span className="text-zinc-400">
+                        <span className="text-zinc-400 text-sm sm:text-base">
                           {feature.competitorA.label}
                         </span>
                       </div>
@@ -316,24 +312,24 @@ export function Comparison() {
             </TabsContent>
 
             {/* Competitor B */}
-            <TabsContent value="competitorB" className="mt-6">
-              <Card className="bg-zinc-900/50 border border-zinc-800/50 p-6">
-                <h3 className="text-xl font-bold text-zinc-300 mb-6 text-center">
+            <TabsContent value="competitorB" className="mt-4">
+              <Card className="bg-zinc-900/50 border border-zinc-800/50 p-4 sm:p-6">
+                <h3 className="text-lg sm:text-xl font-bold text-zinc-300 mb-4 sm:mb-6 text-center">
                   Competitor B
                 </h3>
-                <div className="space-y-4">
+                <div className="space-y-3 sm:space-y-4">
                   {features.map((feature, index) => (
                     <motion.div
                       key={index}
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: index * 0.05 }}
-                      className="flex items-center justify-between p-4 rounded-lg bg-zinc-800/50"
+                      className="flex items-center justify-between p-3 sm:p-4 rounded-lg bg-zinc-800/50"
                     >
-                      <span className="text-zinc-400">{feature.feature}</span>
-                      <div className="flex items-center gap-2">
+                      <span className="text-zinc-400 text-sm sm:text-base">{feature.feature}</span>
+                      <div className="flex items-center gap-1.5 sm:gap-2">
                         <StatusIcon status={feature.competitorB.status} />
-                        <span className="text-zinc-400">
+                        <span className="text-zinc-400 text-sm sm:text-base">
                           {feature.competitorB.label}
                         </span>
                       </div>
@@ -349,17 +345,13 @@ export function Comparison() {
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
+          viewport={{ once: false }}
           transition={{ delay: 0.4 }}
           className="text-center mt-8 text-sm text-zinc-500"
         >
           * Comparison based on publicly available data and testing as of October 2025
         </motion.p>
       </div>
-
-      {/* Decorative Elements */}
-      <div className="absolute -top-32 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl" />
-      <div className="absolute -bottom-32 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
     </section>
   );
 }

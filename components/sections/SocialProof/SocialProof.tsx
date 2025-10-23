@@ -66,43 +66,37 @@ export function SocialProof() {
     <section
       ref={sectionRef}
       id="social-proof"
-      className="relative border-b border-dark-lighter bg-dark py-24"
+      className="relative bg-black py-16 sm:py-20"
     >
-      {/* Background decorative elements */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute left-1/4 top-1/4 h-64 w-64 rounded-full bg-neon-green/5 blur-[100px]" />
-        <div className="absolute bottom-1/4 right-1/4 h-64 w-64 rounded-full bg-neon-purple/5 blur-[100px]" />
-      </div>
-
-      <div className="container relative z-10 mx-auto px-4">
+      <div className="container relative z-10 mx-auto px-4 sm:px-6">
         {/* Section header */}
-        <div className="mb-16 text-center">
+        <div className="mb-12 sm:mb-16 text-center">
           <Badge
             variant="outline"
-            className="mb-4 border-neon-green/30 bg-neon-green/10 text-neon-green"
+            className="mb-3 sm:mb-4 border-neon-green/30 bg-neon-green/10 text-neon-green text-xs sm:text-sm"
           >
             Trusted by Thousands
           </Badge>
-          <h2 className="mb-4 bg-linear-to-r from-neon-green via-neon-cyan to-neon-purple bg-clip-text text-3xl font-bold text-transparent sm:text-4xl md:text-5xl">
+          <h2 className="mb-3 sm:mb-4 bg-linear-to-r from-neon-green via-neon-cyan to-neon-purple bg-clip-text text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-transparent px-2">
             Join the Community
           </h2>
-          <p className="mx-auto max-w-2xl text-base sm:text-lg text-gray-400">
+          <p className="mx-auto max-w-2xl text-sm sm:text-base md:text-lg text-gray-400 px-4">
             Thousands of musicians, producers, and audio engineers trust LUFS
             Music Analyzer for their audio analysis needs.
           </p>
         </div>
 
         {/* Trust indicators grid */}
-        <div className="mb-16 grid gap-6 sm:gap-8 grid-cols-1 min-[500px]:grid-cols-2 lg:grid-cols-4">
+        <div className="mb-12 sm:mb-16 grid gap-4 sm:gap-6 md:gap-8 grid-cols-2 lg:grid-cols-4">
           {trustIndicators.map((indicator, index) => (
             <div
               key={index}
-              className="flex flex-col items-center gap-4 rounded-xl border border-dark-lighter bg-dark-card p-6 transition-all duration-300 hover:border-neon-green/40 hover:shadow-[0_0_30px_rgba(0,255,136,0.15)]"
+              className="flex flex-col items-center gap-2 sm:gap-3 md:gap-4 rounded-lg sm:rounded-xl border border-dark-lighter bg-dark-card p-4 sm:p-6 transition-all duration-300 hover:border-neon-green/40 hover:shadow-[0_0_30px_rgba(0,255,136,0.15)] active:scale-95"
             >
-              <div className={`${indicator.color}`}>{indicator.icon}</div>
+              <div className={`${indicator.color} scale-75 sm:scale-100`}>{indicator.icon}</div>
               <div className="text-center">
                 <div
-                  className={`mb-2 text-3xl font-bold ${indicator.color} sm:text-4xl md:text-5xl`}
+                  className={`mb-1 sm:mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold ${indicator.color}`}
                 >
                   {hasAnimated ? (
                     <CountUp
@@ -117,23 +111,23 @@ export function SocialProof() {
                     `0${indicator.suffix}`
                   )}
                 </div>
-                <p className="text-xs sm:text-sm text-gray-400">{indicator.label}</p>
+                <p className="text-[10px] sm:text-xs md:text-sm text-gray-400 leading-tight">{indicator.label}</p>
               </div>
             </div>
           ))}
         </div>
 
         {/* Platform support marquee */}
-        <div className="rounded-xl border border-dark-lighter bg-dark-card p-8">
-          <h3 className="mb-6 text-center text-xl font-semibold text-gray-300">
+        <div className="rounded-lg sm:rounded-xl border border-dark-lighter bg-dark-card p-4 sm:p-6 md:p-8 overflow-hidden">
+          <h3 className="mb-4 sm:mb-6 text-center text-base sm:text-lg md:text-xl font-semibold text-gray-300">
             Supporting 1000+ platforms including:
           </h3>
-          <Marquee gradient={false} speed={40} pauseOnHover={true}>
+          <Marquee gradient={false} speed={40} pauseOnHover={false}>
             {platformLogos.concat(platformLogos).map((platform, index) => {
               const content = (
                 <>
-                  <span className="text-3xl">{platform.emoji}</span>
-                  <span className="whitespace-nowrap text-lg font-medium text-gray-300">
+                  <span className="text-xl sm:text-2xl md:text-3xl">{platform.emoji}</span>
+                  <span className="whitespace-nowrap text-sm sm:text-base md:text-lg font-medium text-gray-300">
                     {platform.name}
                   </span>
                 </>
@@ -146,7 +140,7 @@ export function SocialProof() {
                     href={platform.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mx-6 flex items-center gap-3 rounded-lg border border-dark-lighter bg-dark-lighter/50 px-6 py-4 transition-all duration-300 hover:border-neon-green/40 hover:shadow-[0_0_20px_rgba(0,255,136,0.1)] hover:scale-105 cursor-pointer"
+                    className="mx-3 sm:mx-4 md:mx-6 flex items-center gap-2 sm:gap-3 rounded-lg border border-dark-lighter bg-dark-lighter/50 px-3 sm:px-4 md:px-6 py-2 sm:py-3 md:py-4 transition-all duration-300 hover:border-neon-green/40 hover:shadow-[0_0_20px_rgba(0,255,136,0.1)] cursor-pointer active:scale-95"
                   >
                     {content}
                   </a>
@@ -156,7 +150,7 @@ export function SocialProof() {
               return (
                 <div
                   key={index}
-                  className="mx-6 flex items-center gap-3 rounded-lg border border-dark-lighter bg-dark-lighter/50 px-6 py-4 transition-all duration-300 hover:border-neon-green/40 hover:shadow-[0_0_20px_rgba(0,255,136,0.1)]"
+                  className="mx-3 sm:mx-4 md:mx-6 flex items-center gap-2 sm:gap-3 rounded-lg border border-dark-lighter bg-dark-lighter/50 px-3 sm:px-4 md:px-6 py-2 sm:py-3 md:py-4 transition-all duration-300 hover:border-neon-green/40 hover:shadow-[0_0_20px_rgba(0,255,136,0.1)]"
                 >
                   {content}
                 </div>
@@ -166,30 +160,30 @@ export function SocialProof() {
         </div>
 
         {/* Trust badges */}
-        <div className="mt-12 flex flex-wrap items-center justify-center gap-4">
+        <div className="mt-10 sm:mt-12 flex flex-wrap items-center justify-center gap-2 sm:gap-3 md:gap-4">
           <Badge
             variant="outline"
-            className="border-neon-green/30 bg-neon-green/5 px-4 py-2 text-sm text-neon-green"
+            className="border-neon-green/30 bg-neon-green/5 px-2 sm:px-3 md:px-4 py-1 sm:py-1.5 md:py-2 text-xs sm:text-sm text-neon-green"
           >
-            ⚡ Lightning Fast Analysis
+            ⚡ Lightning Fast
           </Badge>
           <Badge
             variant="outline"
-            className="border-neon-cyan/30 bg-neon-cyan/5 px-4 py-2 text-sm text-neon-cyan"
+            className="border-neon-cyan/30 bg-neon-cyan/5 px-2 sm:px-3 md:px-4 py-1 sm:py-1.5 md:py-2 text-xs sm:text-sm text-neon-cyan"
           >
-            🔒 100% Private & Secure
+            🔒 100% Private
           </Badge>
           <Badge
             variant="outline"
-            className="border-neon-purple/30 bg-neon-purple/5 px-4 py-2 text-sm text-neon-purple"
+            className="border-neon-purple/30 bg-neon-purple/5 px-2 sm:px-3 md:px-4 py-1 sm:py-1.5 md:py-2 text-xs sm:text-sm text-neon-purple"
           >
             🎯 90-97% Accuracy
           </Badge>
           <Badge
             variant="outline"
-            className="border-neon-pink/30 bg-neon-pink/5 px-4 py-2 text-sm text-neon-pink"
+            className="border-neon-pink/30 bg-neon-pink/5 px-2 sm:px-3 md:px-4 py-1 sm:py-1.5 md:py-2 text-xs sm:text-sm text-neon-pink"
           >
-            💎 Best Price in Market
+            💎 Best Price
           </Badge>
         </div>
       </div>

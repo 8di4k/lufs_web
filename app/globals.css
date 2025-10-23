@@ -87,6 +87,9 @@ body {
     "Segoe UI",
     sans-serif;
   overflow-x: hidden;
+  /* Hardware acceleration for smooth scrolling */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Heading Font Class */
@@ -154,9 +157,17 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Smooth Scrolling */
+/* Smooth Scrolling with Performance Optimization */
 html {
   scroll-behavior: smooth;
+}
+
+/* Performance optimization for specific elements */
+canvas,
+video,
+iframe {
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 /* Custom Scrollbar */
@@ -311,10 +322,83 @@ button:disabled,
   }
 }
 
-/* Smooth horizontal scrolling */
+/* Smooth horizontal scrolling with momentum */
 @media (hover: none) and (pointer: coarse) {
   .overflow-x-auto {
     -webkit-overflow-scrolling: touch;
     scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+  }
+}
+
+/* Mobile: Larger touch targets */
+@media (max-width: 768px) {
+  button, 
+  a[role="button"],
+  [role="tab"] {
+    min-height: 44px;
+  }
+}
+
+/* Mobile: Optimize text rendering */
+@media (max-width: 768px) {
+  body {
+    text-rendering: optimizeSpeed;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  /* Reduce animation complexity on mobile */
+  * {
+    will-change: auto !important;
+  }
+}
+
+/* Mobile: Reduce motion for better performance */
+@media (max-width: 768px) and (prefers-reduced-motion: no-preference) {
+  * {
+    animation-duration: 0.5s !important;
+    transition-duration: 0.2s !important;
+  }
+}
+
+/* Mobile: Better tap highlight */
+@media (hover: none) and (pointer: coarse) {
+  a, button {
+    -webkit-tap-highlight-color: rgba(0, 255, 136, 0.2);
+  }
+}
+
+/* Mobile: Prevent zoom on input focus (iOS) */
+@media (max-width: 768px) {
+  input,
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+}
+
+/* Mobile: Safe area insets for notch devices */
+@supports (padding: max(0px)) {
+  body {
+    padding-left: max(0px, env(safe-area-inset-left));
+    padding-right: max(0px, env(safe-area-inset-right));
+  }
+}
+
+/* ========================================
+   ANIMATION KEYFRAMES
+   ======================================== */
+
+/* Shimmer effect for gradients */
+@keyframes shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }

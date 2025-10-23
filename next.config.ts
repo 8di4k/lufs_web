@@ -4,6 +4,9 @@ const nextConfig: NextConfig = {
   // Performance optimizations
   reactStrictMode: true,
   
+  // Enable standalone output for Docker (uncomment if using Docker)
+  // output: 'standalone',
+  
   // Image optimization
   images: {
     formats: ["image/avif", "image/webp"],

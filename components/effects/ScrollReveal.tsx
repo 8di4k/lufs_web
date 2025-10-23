@@ -43,13 +43,15 @@ export function ScrollReveal({
   duration = 0.5,
 }: ScrollRevealProps) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.3 });
+  const isInView = useInView(ref, { once: false, amount: 0.3 });
   const controls = useAnimation();
   const prefersReducedMotion = useReducedMotion();
 
   useEffect(() => {
     if (isInView) {
       controls.start("visible");
+    } else {
+      controls.start("hidden");
     }
   }, [isInView, controls]);
 

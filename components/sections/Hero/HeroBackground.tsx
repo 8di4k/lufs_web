@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, memo } from "react";
 
-export function HeroBackground() {
+export const HeroBackground = memo(function HeroBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -29,8 +29,8 @@ export function HeroBackground() {
       radius: number;
     }> = [];
 
-    // Create particles
-    for (let i = 0; i < 50; i++) {
+    // Create particles (reduced for performance)
+    for (let i = 0; i < 30; i++) {
       particles.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
@@ -40,9 +40,23 @@ export function HeroBackground() {
       });
     }
 
-    // Animation loop
-    const animate = () => {
-      ctx.fillStyle = "rgba(10, 10, 15, 0.1)";
+    // Animation loop with performance optimization
+    let animationFrameId: number;
+    let lastFrameTime = 0;
+    const targetFPS = 60;
+    const frameInterval = 1000 / targetFPS;
+    
+    const animate = (currentTime: number) => {
+      animationFrameId = requestAnimationFrame(animate);
+      
+      // Throttle to target FPS
+      const deltaTime = currentTime - lastFrameTime;
+      if (deltaTime < frameInterval) {
+        return;
+      }
+      lastFrameTime = currentTime - (deltaTime % frameInterval);
+
+      ctx.fillStyle = "rgba(0, 0, 0, 0.1)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       // Update and draw particles
@@ -77,19 +91,18 @@ export function HeroBackground() {
           }
         });
       });
-
-      requestAnimationFrame(animate);
     };
 
-    animate();
+    animate(0);
 
     return () => {
       window.removeEventListener("resize", setCanvasSize);
+      cancelAnimationFrame(animationFrameId);
     };
   }, []);
 
   return (
     <canvas ref={canvasRef} className="absolute inset-0 h-full w-full" style={{ opacity: 0.15 }} />
   );
-}
+});
 
