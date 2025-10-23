@@ -1,0 +1,2 @@
+export { SocialProof } from "./SocialProof";
+
