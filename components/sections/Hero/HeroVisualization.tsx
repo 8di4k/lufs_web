@@ -37,14 +37,14 @@ function AudioBars() {
 
   useFrame((state) => {
     if (groupRef.current) {
-      groupRef.current.rotation.y += 0.001 * scrollSpeed;
+      groupRef.current.rotation.y += 0.0005 * scrollSpeed;
     }
 
     // Animate individual bars
     barsRef.current.forEach((bar, i) => {
       if (bar) {
         const time = state.clock.getElapsedTime();
-        const scale = 1 + Math.sin(time * 2 + i * 0.5) * 0.5 * scrollSpeed;
+        const scale = 1 + Math.sin(time * 1 + i * 0.5) * 0.5 * scrollSpeed;
         bar.scale.y = scale;
       }
     });
@@ -94,14 +94,14 @@ function Scene() {
       <AudioBars />
 
       {/* Stars background */}
-      <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade speed={1} />
+      <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade speed={0.5} />
 
       {/* Camera controls (subtle movement) */}
       <OrbitControls
         enableZoom={false}
         enablePan={false}
         autoRotate
-        autoRotateSpeed={0.5}
+        autoRotateSpeed={0.3}
         minPolarAngle={Math.PI / 2}
         maxPolarAngle={Math.PI / 2}
       />
@@ -147,7 +147,7 @@ export function HeroVisualization() {
   }
 
   return (
-    <div className="pointer-events-none absolute inset-0 opacity-40">
+    <div className="pointer-events-none absolute inset-0 opacity-20">
       <Canvas
         camera={{ position: [0, 0, 8], fov: 50 }}
         gl={{ antialias: true, alpha: true }}

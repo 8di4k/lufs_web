@@ -34,8 +34,8 @@ export function HeroBackground() {
       particles.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.5,
-        vy: (Math.random() - 0.5) * 0.5,
+        vx: (Math.random() - 0.5) * 0.2,
+        vy: (Math.random() - 0.5) * 0.2,
         radius: Math.random() * 2 + 1,
       });
     }
@@ -89,7 +89,7 @@ export function HeroBackground() {
   }, []);
 
   return (
-    <canvas ref={canvasRef} className="absolute inset-0 h-full w-full" style={{ opacity: 0.3 }} />
+    <canvas ref={canvasRef} className="absolute inset-0 h-full w-full" style={{ opacity: 0.15 }} />
   );
 }
 

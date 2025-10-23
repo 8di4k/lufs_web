@@ -97,7 +97,8 @@ function PricingCard({ plan, index }: { plan: PricingPlan; index: number }) {
     >
       <Card
         className={cn(
-          "relative h-full overflow-hidden p-8",
+          "relative h-full overflow-visible p-8",
+          plan.badge ? "pt-10" : "pt-8",
           "bg-linear-to-br from-zinc-900 via-zinc-900 to-zinc-950",
           "border transition-all duration-500",
           plan.highlighted
@@ -109,7 +110,7 @@ function PricingCard({ plan, index }: { plan: PricingPlan; index: number }) {
         {plan.badge && (
           <Badge
             className={cn(
-              "absolute -top-3 left-1/2 -translate-x-1/2 text-xs font-bold px-3 py-1 border-none",
+              "absolute -top-3 left-1/2 -translate-x-1/2 text-xs font-bold px-3 py-1 border-none z-10",
               plan.highlighted
                 ? "bg-linear-to-r from-cyan-500 to-blue-500 text-white"
                 : "bg-zinc-700 text-zinc-200"
@@ -227,7 +228,7 @@ function PricingCard({ plan, index }: { plan: PricingPlan; index: number }) {
 
 export function Pricing() {
   return (
-    <section className="relative py-20 px-4 sm:px-6 lg:px-8 bg-black overflow-hidden">
+    <section className="relative pt-28 pb-20 px-4 sm:px-6 lg:px-8 bg-black overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,var(--tw-gradient-stops))] from-cyan-900/20 via-black to-black" />
       <div className="absolute inset-0 bg-grid-white/[0.02]" />

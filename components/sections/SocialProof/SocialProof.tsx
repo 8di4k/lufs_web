@@ -40,14 +40,13 @@ const trustIndicators = [
 ];
 
 const platformLogos = [
-  { name: "YouTube", emoji: "📺" },
-  { name: "SoundCloud", emoji: "☁️" },
-  { name: "Spotify", emoji: "🎵" },
-  { name: "Apple Music", emoji: "🎶" },
-  { name: "TikTok", emoji: "🎬" },
-  { name: "Bandcamp", emoji: "🎸" },
-  { name: "Mixcloud", emoji: "🎧" },
-  { name: "Deezer", emoji: "🎼" },
+  { name: "YouTube", emoji: "📺", url: "https://youtube.com" },
+  { name: "SoundCloud", emoji: "☁️", url: "https://soundcloud.com" },
+  { name: "TikTok", emoji: "🎬", url: "https://tiktok.com" },
+  { name: "Instagram", emoji: "📸", url: "https://instagram.com" },
+  { name: "Beatstars", emoji: "⭐", url: "https://beatstars.com" },
+  { name: "Traktrain", emoji: "🎹", url: "https://traktrain.com" },
+  { name: "Direct Upload", emoji: "📤", url: null },
 ];
 
 export function SocialProof() {
@@ -130,17 +129,39 @@ export function SocialProof() {
             Supporting 1000+ platforms including:
           </h3>
           <Marquee gradient={false} speed={40} pauseOnHover={true}>
-            {platformLogos.concat(platformLogos).map((platform, index) => (
-              <div
-                key={index}
-                className="mx-6 flex items-center gap-3 rounded-lg border border-dark-lighter bg-dark-lighter/50 px-6 py-4 transition-all duration-300 hover:border-neon-green/40 hover:shadow-[0_0_20px_rgba(0,255,136,0.1)]"
-              >
-                <span className="text-3xl">{platform.emoji}</span>
-                <span className="whitespace-nowrap text-lg font-medium text-gray-300">
-                  {platform.name}
-                </span>
-              </div>
-            ))}
+            {platformLogos.concat(platformLogos).map((platform, index) => {
+              const content = (
+                <>
+                  <span className="text-3xl">{platform.emoji}</span>
+                  <span className="whitespace-nowrap text-lg font-medium text-gray-300">
+                    {platform.name}
+                  </span>
+                </>
+              );
+
+              if (platform.url) {
+                return (
+                  <a
+                    key={index}
+                    href={platform.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mx-6 flex items-center gap-3 rounded-lg border border-dark-lighter bg-dark-lighter/50 px-6 py-4 transition-all duration-300 hover:border-neon-green/40 hover:shadow-[0_0_20px_rgba(0,255,136,0.1)] hover:scale-105 cursor-pointer"
+                  >
+                    {content}
+                  </a>
+                );
+              }
+
+              return (
+                <div
+                  key={index}
+                  className="mx-6 flex items-center gap-3 rounded-lg border border-dark-lighter bg-dark-lighter/50 px-6 py-4 transition-all duration-300 hover:border-neon-green/40 hover:shadow-[0_0_20px_rgba(0,255,136,0.1)]"
+                >
+                  {content}
+                </div>
+              );
+            })}
           </Marquee>
         </div>
 

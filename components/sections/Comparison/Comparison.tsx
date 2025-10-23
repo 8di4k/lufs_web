@@ -99,7 +99,7 @@ export function Comparison() {
   const isMobile = useMediaQuery("(max-width: 768px)");
 
   return (
-    <section className="relative py-20 px-4 sm:px-6 lg:px-8 bg-black overflow-hidden">
+    <section className="relative pt-28 pb-20 px-4 sm:px-6 lg:px-8 bg-black overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,var(--tw-gradient-stops))] from-cyan-900/20 via-black to-black" />
       <div className="absolute inset-0 bg-grid-white/[0.02]" />
@@ -142,7 +142,7 @@ export function Comparison() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="overflow-hidden rounded-xl border border-zinc-800/50"
+            className="overflow-visible rounded-xl border border-zinc-800/50"
           >
             <div className="grid grid-cols-4 bg-zinc-900/50">
               {/* Header */}
@@ -152,11 +152,11 @@ export function Comparison() {
                 </h3>
               </div>
               
-              <div className="relative p-6 border-b border-r border-cyan-500/30 bg-linear-to-br from-cyan-500/5 to-blue-500/5">
-                <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 bg-cyan-500 text-white border-none">
+              <div className="relative pt-10 px-6 pb-6 border-b border-r border-cyan-500/30 bg-linear-to-br from-cyan-500/5 to-blue-500/5">
+                <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 bg-cyan-500 text-white border-none z-10">
                   ⭐ Our Solution
                 </Badge>
-                <h3 className="text-sm font-semibold text-cyan-400 uppercase text-center mt-2">
+                <h3 className="text-sm font-semibold text-cyan-400 uppercase text-center">
                   LUFS Analyzer
                 </h3>
               </div>

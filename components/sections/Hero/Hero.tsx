@@ -102,7 +102,7 @@ export function Hero() {
           )}
 
           {/* CTA Buttons */}
-          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row sm:items-start">
             <div className="flex flex-col items-center gap-2">
               <Button
                 size="lg"
@@ -120,7 +120,7 @@ export function Hero() {
             <Button
               size="lg"
               variant="outline"
-              className="border-white/20 px-8 py-6 text-lg transition-all duration-300 hover:border-white/40 hover:bg-white/5"
+              className="border-white/20 px-8 py-6 text-lg transition-all duration-300 hover:border-white/40 hover:bg-white/5 sm:mt-0"
               onClick={scrollToDemo}
             >
               <Play className="mr-2 h-5 w-5" />
@@ -143,36 +143,36 @@ export function Hero() {
             </Badge>
           </div>
         </motion.div>
-
-        {/* Scroll Indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 1.6 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 transform"
-        >
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-            className="flex flex-col items-center gap-2"
-          >
-            <span className="text-foreground/50 text-xs uppercase tracking-wider">Scroll</span>
-            <svg
-              className="text-foreground/50 h-6 w-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M19 14l-7 7m0 0l-7-7m7 7V3"
-              />
-            </svg>
-          </motion.div>
-        </motion.div>
       </div>
+
+      {/* Scroll Indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8, delay: 1.6 }}
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 transform hidden md:block"
+      >
+        <motion.div
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 1.5, repeat: Infinity }}
+          className="flex flex-col items-center gap-1.5"
+        >
+          <span className="text-foreground/50 text-[10px] uppercase tracking-wider">Scroll</span>
+          <svg
+            className="text-foreground/50 h-5 w-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M19 14l-7 7m0 0l-7-7m7 7V3"
+            />
+          </svg>
+        </motion.div>
+      </motion.div>
     </section>
   );
 }
