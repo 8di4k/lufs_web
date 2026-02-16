@@ -6,11 +6,11 @@ describe('Stats Section', () => {
   it('renders all stat cards', () => {
     render(<Stats />);
     
-    // Check for stat headings
-    expect(screen.getByText(/BPM Detection Accuracy/i)).toBeInTheDocument();
-    expect(screen.getByText(/Average Analysis Time/i)).toBeInTheDocument();
-    expect(screen.getByText(/Supported Platforms/i)).toBeInTheDocument();
-    expect(screen.getByText(/Monthly Plan/i)).toBeInTheDocument();
+    // Check for stat headings (using getAllByText since component renders for mobile + desktop)
+    expect(screen.getAllByText(/BPM Detection Accuracy/i)[0]).toBeInTheDocument();
+    expect(screen.getAllByText(/Average Analysis Time/i)[0]).toBeInTheDocument();
+    expect(screen.getAllByText(/Supported Platforms/i)[0]).toBeInTheDocument();
+    expect(screen.getAllByText(/Monthly Plan/i)[0]).toBeInTheDocument();
   });
 
   it('displays correct stat values', () => {
@@ -20,9 +20,9 @@ describe('Stats Section', () => {
     const heading = screen.getByRole('heading', { name: /Powered by Numbers/i });
     expect(heading).toBeInTheDocument();
     
-    // Check for comparison badges
-    expect(screen.getByText(/15% better than competitors/i)).toBeInTheDocument();
-    expect(screen.getByText(/3x faster than average/i)).toBeInTheDocument();
+    // Check for comparison badges (using getAllByText since component renders for mobile + desktop)
+    expect(screen.getAllByText(/15% better than competitors/i)[0]).toBeInTheDocument();
+    expect(screen.getAllByText(/3x faster than average/i)[0]).toBeInTheDocument();
   });
 
   it('has proper semantic structure', () => {
