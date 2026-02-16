@@ -39,6 +39,21 @@ const nextConfig: NextConfig = {
       {
         source: "/(.*)",
         headers: [
+          // Content Security Policy for Three.js, Framer Motion, and GSAP
+          {
+            key: "Content-Security-Policy",
+            value: [
+              "default-src 'self'",
+              "script-src 'self' 'unsafe-eval'", // unsafe-eval required for Three.js WebGL compilation, Framer Motion, and GSAP
+              "style-src 'self' 'unsafe-inline'", // Tailwind CSS may use inline styles
+              "img-src 'self' data: https:",
+              "font-src 'self' data:",
+              "connect-src 'self' https:",
+              "frame-ancestors 'none'", // Prevent clickjacking
+              "base-uri 'self'",
+              "form-action 'self'",
+            ].join("; "),
+          },
           {
             key: "X-Frame-Options",
             value: "DENY",
